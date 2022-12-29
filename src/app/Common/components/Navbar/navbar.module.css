@@ -22,3 +22,8 @@
 
   margin: 0;
 }
+
+.navbar a {
+  color: #4f74c8;
+  text-decoration: none;
+}
