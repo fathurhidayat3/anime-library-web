@@ -1,5 +1,4 @@
-import Card from "../Card";
-import { Props as CardProps } from "../Card/types";
+import Card, { Props as CardProps } from "../Card";
 import styles from "./cardContainer.module.css";
 
 type Props = {
@@ -15,7 +14,8 @@ export default function CardContainer(props: Props) {
         ? items.map((anime: any) => {
             return (
               <Card
-                key={anime.title}
+                key={anime.id}
+                id={anime.id}
                 thumbnailSrc={anime.thumbnailSrc}
                 to={`/detail/${anime.id}`}
                 title={anime.title}

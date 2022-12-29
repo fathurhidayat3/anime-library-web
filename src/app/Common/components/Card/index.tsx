@@ -2,10 +2,12 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./card.module.css";
-import { Genre, Props, Theme } from "./types";
 import Thumbnail from "../Thumbnail";
 import Badge from "../Badge";
 import { generateSubtitle } from "./utils";
+import { Anime, Genre, Theme } from "../../../../data/mappers/mapAnimeData";
+
+export type Props = Anime & { to: string };
 
 export default function Card(props: Props): React.ReactElement {
   const { title, subtitle, thumbnailSrc, to, content } = props;

@@ -1,4 +1,34 @@
-export default function mapAnimeData(data: any): any {
+export type Genre = {
+  id: string;
+  name: string;
+};
+
+export type Theme = Genre;
+
+export type Subtitle = {
+  type: string;
+  year: number;
+  status: string;
+  totalEpisode: number;
+};
+
+type CardContent = {
+  synopsis: string;
+  score: number;
+  genres: Genre[];
+  studio: string;
+  themes: Theme[];
+};
+
+export type Anime = {
+  id: string;
+  title: string;
+  subtitle: Subtitle;
+  thumbnailSrc: string;
+  content: CardContent;
+};
+
+export default function mapAnimeData(data: any): Anime {
   return {
     id: data.mal_id,
     title: data.title,
