@@ -1,0 +1,24 @@
+.navbar {
+  background: white;
+  box-shadow: 1px 1px 5px grey;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 1080px;
+}
+
+.navbar h3 {
+  color: #4f74c8;
+
+  margin: 0;
+}
