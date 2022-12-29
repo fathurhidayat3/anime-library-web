@@ -10,16 +10,22 @@ import MainLayout from "../components/MainLayout";
 import mapAnimeData from "../../../../data/mappers/mapAnimeData";
 
 export default function AnimeHomePage(): React.ReactElement {
-  const { data, isLoading } = useQuery("todos", getAnimeList, {
-    staleTime: Infinity,
-  });
+  const [keyword, setKeyword] = React.useState("");
 
-  const animeList = data?.data.map((d: any) => mapAnimeData(d));
+  const { data, isLoading, refetch } = useQuery(
+    "animeList",
+    () => getAnimeList(keyword),
+    {
+      staleTime: Infinity,
+    }
+  );
+
+  const animeList = data?.data?.map((d: any) => mapAnimeData(d));
 
   return (
     <MainLayout>
       <>
-        <Navbar />
+        <Navbar keyword={keyword} setKeyword={setKeyword} onClick={refetch} />
         <div className={styles["anime-homepage__compartment"]}>
           {isLoading ? null : <CardContainer items={animeList} />}
         </div>

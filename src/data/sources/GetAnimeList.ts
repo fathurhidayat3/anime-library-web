@@ -1,9 +1,12 @@
 import axios from "axios";
 
-const getAnimeList = () => {
-  return axios({ method: "GET", url: "https://api.jikan.moe/v4/anime" }).then(
-    (res) => res.data
-  );
+import constants from "../../utils/constants";
+
+const getAnimeList = (keyword?: string, page: number = 1) => {
+  return axios({
+    method: "GET",
+    url: `${constants.API_HOST}/anime?limit=9&page=${page}&q=${keyword}`,
+  }).then((res) => res.data);
 };
 
 export { getAnimeList };

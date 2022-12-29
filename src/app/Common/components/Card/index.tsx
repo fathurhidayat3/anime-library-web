@@ -38,11 +38,17 @@ export default function Card(props: Props): React.ReactElement {
             <span>Score: {score}</span>
           </div>
           <div className={styles["card__badge-container"]}>
-            {genres.map((genre: Genre) => (
-              <div key={genre.name}>
-                <Badge name={genre.name} />
+            {genres.length > 0 ? (
+              genres.map((genre: Genre) => (
+                <div key={genre.name}>
+                  <Badge name={genre.name} />
+                </div>
+              ))
+            ) : (
+              <div>
+                <span>No Genre Data</span>
               </div>
-            ))}
+            )}
           </div>
         </div>
         <div className={styles["card__footer-info"]}>
@@ -50,11 +56,17 @@ export default function Card(props: Props): React.ReactElement {
             <span>Studio: {studio}</span>
           </div>
           <div className={styles["card__badge-container"]}>
-            {themes.map((theme: Theme) => (
-              <div key={theme.name}>
-                <Badge name={theme.name} />
+            {themes.length > 0 ? (
+              themes.map((theme: Theme) => (
+                <div key={theme.name}>
+                  <Badge name={theme.name} />
+                </div>
+              ))
+            ) : (
+              <div>
+                <span>No Themes Data</span>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
