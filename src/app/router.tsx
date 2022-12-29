@@ -3,10 +3,10 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import AnimeHomePage from "./Anime/pages/AnimeHomePage";
 import AnimeDetailPage from "./Anime/pages/AnimeDetailPage";
 
-enum RoutePaths {
-  HOME = "/",
-  DETAIL_PAGE = "/detail/:id",
-}
+export const RoutePaths = {
+  HOME: "/",
+  DETAIL_PAGE: "/detail/:id",
+};
 
 const routeObjects: RouteObject[] = [
   {
