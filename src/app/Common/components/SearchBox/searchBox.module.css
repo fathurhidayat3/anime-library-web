@@ -1,0 +1,24 @@
+.search-box__input-text {
+  border: 1px solid #4f74c8;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+
+  padding: 0 12px;
+  height: 35px;
+  width: 300px;
+}
+
+.search-box__input-text:focus {
+  background-color: white;
+  outline: none;
+}
+
+.search-box__button {
+  border: 1px solid #4f74c8;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+
+  color: #4f74c8;
+
+  height: 37px;
+}
