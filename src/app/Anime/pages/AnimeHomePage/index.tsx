@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useInfiniteQuery, useQueryClient } from "react-query";
-import ReactLoading from "react-loading";
 import { useInView } from "react-intersection-observer";
 
 import styles from "./animeHomePage.module.css";
@@ -9,6 +8,7 @@ import CardContainer from "../../../Common/components/CardContainer";
 import Navbar from "../../../Common/components/Navbar";
 import MainLayout from "../components/MainLayout";
 import mapAnimeData, { Anime } from "../../../../data/mappers/mapAnimeData";
+import Loader from "../../../Common/components/Loader";
 
 export default function AnimeHomePage(): React.ReactElement {
   const [keyword, setKeyword] = React.useState("");
@@ -39,6 +39,7 @@ export default function AnimeHomePage(): React.ReactElement {
 
   const handleClickSearch = () => {
     queryClient.removeQueries("animeList");
+    window?.scrollTo(0, 0);
     refetch();
   };
 
@@ -52,9 +53,7 @@ export default function AnimeHomePage(): React.ReactElement {
         />
         <div className={styles["anime-homepage__compartment"]}>
           {isLoading ? (
-            <div className={styles["anime-homepage__loading"]}>
-              <ReactLoading type="bubbles" color="#4f74c8" />
-            </div>
+            <Loader />
           ) : (
             data?.pages.map((page, index) => (
               <CardContainer
@@ -64,8 +63,8 @@ export default function AnimeHomePage(): React.ReactElement {
             ))
           )}
         </div>
-        <div ref={ref} className={styles["anime-homepage__loading"]}>
-          <ReactLoading type="bubbles" color="#4f74c8" />
+        <div ref={ref}>
+          <Loader />
         </div>
       </>
     </MainLayout>

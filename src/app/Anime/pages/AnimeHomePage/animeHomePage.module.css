@@ -11,9 +11,3 @@
 .anime-homepage__compartment {
   margin-top: 80px;
 }
-
-.anime-homepage__loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
