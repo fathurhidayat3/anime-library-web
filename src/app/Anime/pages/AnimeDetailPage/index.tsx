@@ -14,8 +14,6 @@ export default function AnimeDetailPage(): React.ReactElement {
   const params = useParams();
   const { id } = params;
 
-  console.log("cek params", params);
-
   const { data, isLoading } = useQuery(
     "animeByID",
     () => getAnimeByID(id || "1"),
