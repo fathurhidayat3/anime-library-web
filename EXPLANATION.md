@@ -14,7 +14,8 @@
 
 ## Additional
 
-- Caching with React Query : Reduce API call and provide content faster
-- Lazy Loading Image : To improve First Contentful Paint and User Experience
-- Infinite Scroll Pagination : Feels better for impression and dicovery
-- Unit Test : Make sure to keep code maintanable
+- Caching with React Query to reduce API call and provide content faster
+- Lazy Loading Image improve First Contentful Paint and User Experience
+- Infinite Scroll Pagination because it's feels better for user impression and dicovery
+- Unit Test to make sure to keep code maintanable
+- PWA Support for installable app
