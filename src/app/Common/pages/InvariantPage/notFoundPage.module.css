@@ -1,0 +1,11 @@
+.invariant {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.invariant h3 {
+  color: #4f74c8;
+}
