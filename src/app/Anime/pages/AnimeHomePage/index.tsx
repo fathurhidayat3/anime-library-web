@@ -27,6 +27,7 @@ export default function AnimeHomePage(): React.ReactElement {
           const nextPage = allPages.length + 1;
           return nextPage;
         },
+        staleTime: Infinity,
       }
     );
 
@@ -55,8 +56,9 @@ export default function AnimeHomePage(): React.ReactElement {
               <ReactLoading type="bubbles" color="#4f74c8" />
             </div>
           ) : (
-            data?.pages.map((page) => (
+            data?.pages.map((page, index) => (
               <CardContainer
+                key={index}
                 items={page.data.map((d: Anime) => mapAnimeData(d))}
               />
             ))
