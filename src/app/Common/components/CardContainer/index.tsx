@@ -2,7 +2,7 @@ import Card, { Props as CardProps } from "../Card";
 import styles from "./cardContainer.module.css";
 
 type Props = {
-  items: CardProps[];
+  items?: CardProps[];
 };
 
 export default function CardContainer(props: Props) {
@@ -10,7 +10,7 @@ export default function CardContainer(props: Props) {
 
   return (
     <div className={styles["card-container"]}>
-      {items.length > 0
+      {items && items.length > 0
         ? items.map((anime: any) => {
             return (
               <Card
