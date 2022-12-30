@@ -1,10 +1,22 @@
-import { Anime } from "../models/Anime";
+import { CardContent, Subtitle } from "../models/Anime";
 
-export default function mapAnimeData(data: any): Anime {
+type CardContentDetail = CardContent & { background: string };
+
+export type Anime = {
+  id: string;
+  title: string;
+  subtitle: Subtitle;
+  thumbnailSrc: string;
+  youtubeTrailerID: string;
+  content: CardContentDetail;
+};
+
+export default function mapAnimeDetailData(data: any): Anime {
   return {
     id: data?.mal_id,
     title: data?.title,
     thumbnailSrc: data?.images?.jpg.image_url,
+    youtubeTrailerID: data?.trailer.youtube_id,
     subtitle: {
       type: data?.type,
       year: data?.year,
@@ -17,6 +29,7 @@ export default function mapAnimeData(data: any): Anime {
       studio: data?.studios?.[0] ? data.studios?.[0].name : "-",
       genres: data?.genres,
       themes: data?.themes,
+      background: data?.background || "-",
     },
   };
 }

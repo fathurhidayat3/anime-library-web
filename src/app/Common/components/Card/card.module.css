@@ -3,6 +3,7 @@
   border-radius: 4px;
 
   margin: 8px 4px;
+  height: fit-content;
   width: 360px;
 }
 
@@ -10,6 +11,7 @@
   background-color: #4f74c8;
   border-radius: 4px;
 
+  height: fit-content;
   width: 200px;
 }
 

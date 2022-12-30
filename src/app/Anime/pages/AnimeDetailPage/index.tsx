@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 
 import styles from "../AnimeDetailPage/animeDetailPage.module.css";
-import mapAnimeData from "../../../../data/mappers/mapAnimeData";
+import mapAnimeDetailData from "../../../../data/mappers/mapAnimeDetailData";
 import { getAnimeByID } from "../../../../data/sources/GetAnimeByID";
 import Card from "../../../Common/components/Card";
 import Navbar from "../../../Common/components/Navbar";
@@ -22,7 +22,7 @@ export default function AnimeDetailPage(): React.ReactElement {
     }
   );
 
-  const anime = mapAnimeData(data?.data);
+  const anime = mapAnimeDetailData(data?.data);
 
   return (
     <MainLayout>
@@ -42,6 +42,18 @@ export default function AnimeDetailPage(): React.ReactElement {
               hideInfo
             />
             <div className={styles["anime-detail-page__info-container"]}>
+              <div className={styles["anime-detail-page__info-box"]}>
+                <h3>Trailer</h3>
+                <hr />
+                <div>
+                  <iframe
+                    title="Trailer"
+                    width="320"
+                    height="240"
+                    src={`https://www.youtube.com/embed/${anime.youtubeTrailerID}`}
+                  ></iframe>
+                </div>
+              </div>
               <div className={styles["anime-detail-page__info-box"]}>
                 <h3>Synopsis</h3>
                 <hr />

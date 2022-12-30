@@ -5,7 +5,7 @@ import styles from "./card.module.css";
 import Thumbnail from "../Thumbnail";
 import Badge from "../Badge";
 import { generateSubtitle } from "./utils";
-import { Anime, Genre, Theme } from "../../../../data/mappers/mapAnimeData";
+import { Anime, Genre, Theme } from "../../../../data/models/Anime";
 
 export type Props = Anime & { to: string; hideInfo?: boolean };
 

@@ -7,8 +7,9 @@ import { getAnimeList } from "../../../../data/sources/GetAnimeList";
 import CardContainer from "../../../Common/components/CardContainer";
 import Navbar from "../../../Common/components/Navbar";
 import MainLayout from "../components/MainLayout";
-import mapAnimeData, { Anime } from "../../../../data/mappers/mapAnimeData";
+import mapAnimeData from "../../../../data/mappers/mapAnimeData";
 import Loader from "../../../Common/components/Loader";
+import { Anime } from "../../../../data/models/Anime";
 
 export default function AnimeHomePage(): React.ReactElement {
   const [keyword, setKeyword] = React.useState("");
