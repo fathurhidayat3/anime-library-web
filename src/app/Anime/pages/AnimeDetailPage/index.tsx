@@ -11,11 +11,18 @@ import MainLayout from "../components/MainLayout";
 import Loader from "../../../Common/components/Loader";
 
 export default function AnimeDetailPage(): React.ReactElement {
-  const { id = "1" } = useParams();
+  const params = useParams();
+  const { id } = params;
 
-  const { data, isLoading } = useQuery("animeByID", () => getAnimeByID(id), {
-    staleTime: Infinity,
-  });
+  console.log("cek params", params);
+
+  const { data, isLoading } = useQuery(
+    "animeByID",
+    () => getAnimeByID(id || "1"),
+    {
+      staleTime: id ? undefined : Infinity,
+    }
+  );
 
   const anime = mapAnimeData(data?.data);
 
@@ -34,7 +41,20 @@ export default function AnimeDetailPage(): React.ReactElement {
               title={anime.title}
               subtitle={anime.subtitle}
               content={anime.content}
+              hideInfo
             />
+            <div className={styles["anime-detail-page__info-container"]}>
+              <div className={styles["anime-detail-page__info-box"]}>
+                <h3>Synopsis</h3>
+                <hr />
+                {anime.content.synopsis}
+              </div>
+              <div className={styles["anime-detail-page__info-box"]}>
+                <h3>Background</h3>
+                <hr />
+                {anime.content.background}
+              </div>
+            </div>
           </div>
         )}
       </div>

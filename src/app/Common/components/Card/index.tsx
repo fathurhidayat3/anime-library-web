@@ -7,15 +7,15 @@ import Badge from "../Badge";
 import { generateSubtitle } from "./utils";
 import { Anime, Genre, Theme } from "../../../../data/mappers/mapAnimeData";
 
-export type Props = Anime & { to: string };
+export type Props = Anime & { to: string; hideInfo?: boolean };
 
 export default function Card(props: Props): React.ReactElement {
-  const { title, subtitle, thumbnailSrc, to, content } = props;
+  const { title, subtitle, thumbnailSrc, to, content, hideInfo } = props;
 
   const { synopsis, score, genres, studio, themes } = content;
 
   return (
-    <div className={styles["card"]}>
+    <div className={hideInfo ? styles["card--no-info"] : styles["card"]}>
       <div className={styles["card__header"]}>
         <Link to={to}>{title}</Link>
         <span className={styles["card__subtitle"]}>
@@ -28,11 +28,13 @@ export default function Card(props: Props): React.ReactElement {
             <Thumbnail src={thumbnailSrc} alt={title} />
           </Link>
         </div>
-        <div className={styles["card__detail"]}>
-          <div className={styles["card__synopsis"]}>
-            <span>{synopsis}</span>
+        {hideInfo ? null : (
+          <div className={styles["card__detail"]}>
+            <div className={styles["card__synopsis"]}>
+              <span>{synopsis}</span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <div className={styles["card__footer"]}>
         <div className={styles["card__footer-info"]}>
@@ -53,24 +55,26 @@ export default function Card(props: Props): React.ReactElement {
             )}
           </div>
         </div>
-        <div className={styles["card__footer-info"]}>
-          <div>
-            <span>Studio: {studio}</span>
-          </div>
-          <div className={styles["card__badge-container"]}>
-            {themes.length > 0 ? (
-              themes.map((theme: Theme) => (
-                <div key={theme.name}>
-                  <Badge name={theme.name} />
+        {hideInfo ? null : (
+          <div className={styles["card__footer-info"]}>
+            <div>
+              <span>Studio: {studio}</span>
+            </div>
+            <div className={styles["card__badge-container"]}>
+              {themes.length > 0 ? (
+                themes.map((theme: Theme) => (
+                  <div key={theme.name}>
+                    <Badge name={theme.name} />
+                  </div>
+                ))
+              ) : (
+                <div>
+                  <span>No Themes Data</span>
                 </div>
-              ))
-            ) : (
-              <div>
-                <span>No Themes Data</span>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

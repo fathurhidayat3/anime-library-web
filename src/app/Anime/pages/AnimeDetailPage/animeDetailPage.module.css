@@ -10,7 +10,27 @@
 
 .anime-detail-page__compartment {
   display: flex;
-  align-items: center;
   margin-top: 65px;
   width: 100%;
+}
+
+.anime-detail-page__info-container {
+  border-radius: 6px;
+
+  flex-grow: 1;
+  margin-left: 20px;
+
+  height: 330px;
+}
+
+.anime-detail-page__info-box {
+  background: aliceblue;
+  border-radius: 6px;
+
+  margin-bottom: 20px;
+  padding: 020px;
+}
+
+.anime-detail-page__info-box h3 {
+  margin: 0;
 }

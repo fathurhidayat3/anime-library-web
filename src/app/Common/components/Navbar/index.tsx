@@ -2,7 +2,7 @@ import * as React from "react";
 
 import styles from "./navbar.module.css";
 import SearchBox from "../SearchBox";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { RoutePaths } from "../../../router";
 
 export default function Navbar(props: any): React.ReactElement {
@@ -22,7 +22,10 @@ export default function Navbar(props: any): React.ReactElement {
         <SearchBox
           keyword={keyword}
           setKeyword={setKeyword}
-          onClick={onClick}
+          onClick={() => {
+            handleClickLogo();
+            onClick();
+          }}
         />
       </div>
     </div>

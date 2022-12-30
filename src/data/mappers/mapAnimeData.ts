@@ -18,6 +18,7 @@ type CardContent = {
   genres: Genre[];
   studio: string;
   themes: Theme[];
+  background: string;
 };
 
 export type Anime = {
@@ -41,10 +42,11 @@ export default function mapAnimeData(data: any): Anime {
     },
     content: {
       score: data?.score || "-",
-      synopsis: data?.synopsis,
+      synopsis: data?.synopsis || "-",
       studio: data?.studios?.[0] ? data.studios?.[0].name : "-",
       genres: data?.genres,
       themes: data?.themes,
+      background: data?.background || "-",
     },
   };
 }
