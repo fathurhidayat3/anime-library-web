@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useInfiniteQuery } from "react-query";
+import { useInfiniteQuery, useQueryClient } from "react-query";
 import ReactLoading from "react-loading";
 import { useInView } from "react-intersection-observer";
 
@@ -13,6 +13,11 @@ import mapAnimeData, { Anime } from "../../../../data/mappers/mapAnimeData";
 export default function AnimeHomePage(): React.ReactElement {
   const [keyword, setKeyword] = React.useState("");
 
+  const queryClient = useQueryClient();
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
+
   const { data, isLoading, hasNextPage, fetchNextPage, refetch } =
     useInfiniteQuery(
       "animeList",
@@ -25,23 +30,28 @@ export default function AnimeHomePage(): React.ReactElement {
       }
     );
 
-  const { ref, inView } = useInView({
-    threshold: 0,
-  });
-
   React.useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
+  const handleClickSearch = () => {
+    queryClient.removeQueries("animeList");
+    refetch();
+  };
+
   return (
     <MainLayout>
       <>
-        <Navbar keyword={keyword} setKeyword={setKeyword} onClick={refetch} />
+        <Navbar
+          keyword={keyword}
+          setKeyword={setKeyword}
+          onClick={handleClickSearch}
+        />
         <div className={styles["anime-homepage__compartment"]}>
           {isLoading ? (
-            <div ref={ref} className={styles["anime-homepage__loading"]}>
+            <div className={styles["anime-homepage__loading"]}>
               <ReactLoading type="bubbles" color="#4f74c8" />
             </div>
           ) : (
